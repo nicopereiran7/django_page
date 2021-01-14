@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" 
+    rel="stylesheet">
+
+    <title>Peliculas | NETFLIX</title>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <a href="{% url 'blog:Home' %}" class="logotipo">NETFLIX</a>
+            <!--<h2 class="logotipo">NETFLIX</h2>-->
+            <nav>
+                <a href="{% url 'blog:Home' %}" class="activo">Inicio</a>
+                <a href="{% url 'blog:peliculas' %}">Peliculas</a>
+                <a href="{% url 'blog:series' %}">Series</a>
+                <a href="#">Documentales</a>
+                
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="peliculas-recomendadas container">
+            <!--  NUEVAS PELICULAS -->
+            <div class="contenedor-titulo-controles">
+                <h3>TODAS LAS <strong class="titulo-principal">PELICULAS</strong></h3>
+                <div class="indicadores"></div>
+            </div>
+            <div class="container-busqueda">
+                <form method="get">
+                    <input type="text" placeholder="Buscar..." name="buscar" value="{{ request.GET.buscar }}">
+                    <span>
+                        <button type="submit"><i class="fas fa-search"></i>Buscar</button>
+                    </span>
+                </form>
+            </div>
+
+            <div class="contenedor-principal">
+                <div class="contenedor-carousel">
+                    <div class="container-pelicula">
+                        <div class="pelicula">
+                            {% if peliculas %}
+                            {% for p in peliculas %}
+                            <a href="{% url 'blog:detalle_post' p.slug %}"><img src="{{ p.imagen_fondo.url }}"</a>
+                            {% endfor %}
+                            {% else %}
+                            <h3 class="titulo">No hay Resultados de "{{ busqueda }}"</h3>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+    </main>
+
+    <footer>
+        <p>&copy | NETFLIX</p>
+    </footer>
+
+    <script src="https://kit.fontawesome.com/2c36e9b7b1.js" crossorigin="anonymous"></script>
+    <script src="{% static 'js/main.js' %}"></script>
+</body>
+</html>

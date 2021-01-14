@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        {% load static %}
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" 
+        rel="stylesheet">
+
+        <title>NETFLIX | Home</title>
+    </head>
+    <body>
+        
+        <header>
+            <div class="container">
+                <a href="{% url 'blog:Home' %}" class="logotipo">NETFLIX</a>
+                <!--<h2 class="logotipo">NETFLIX</h2>-->
+                <nav>
+                    <a href="{% url 'blog:Home' %}" class="activo">Inicio</a>
+                    <a href="{% url 'blog:peliculas' %}">Peliculas</a>
+                    <a href="{% url 'blog:series' %}">Series</a>
+                    <a href="#">Documentales</a>
+                    
+                </nav>
+            </div>
+        </header>
+
+        <main>
+            {% if peliculas %}
+            {% for l in last %}
+            <!-- PELICULA PRINCIPAL -->
+            <div class="pelicula-principal"><!--Ultimo lanzamiento-->
+                <div class="pelicula-princial_fondo">
+                    <img src="{{ l.imagen_fondo.url }}" class="imagen"/>
+                </div>
+                
+                <div class="container">
+                    <h3 class="titulo">{{ l.titulo }} <em>({{ l.anio }})</em></h3>
+                    <h5 class="director">Dir. {{ l.director }}</h5>
+                    <p class="descripcion">{{ l.descripcion }}</p>
+                    <button role="button" class="boton"><i class="fas fa-play"></i>Reproducir</button>
+                    <a href="#">
+                        <button role="button" class="boton"><i class="fas fa-film"></i>Ver Trailer</button>
+                    </a>
+                    {% endfor %}
+                    {% else %}
+                    <h3 class="titulo">No hay peliculas</h3>
+                    {% endif %}
+                </div>
+            </div>
+
+            <div class="peliculas-recomendadas container">
+                <!--  NUEVAS PELICULAS -->
+                <div class="contenedor-titulo-controles">
+                    <h3>Nuevas Peliculas</h3>
+                    <div class="indicadores"></div>
+                </div>
+    
+                <div class="contenedor-principal">
+                    <div class="contenedor-carousel">
+                        <div class="container-pelicula">
+                            <div class="pelicula">
+                                {% if peliculas %}
+                                {% for l in last_ten %}
+                                <a href="{% url 'blog:detalle_post' l.slug %}"><img src="{{ l.imagen_fondo.url }}"</a>
+                                {% endfor %}
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="peliculas-recomendadas container">
+                <div class="contenedor-titulo-controles">
+                    <h3>Peliculas Accion</h3>
+                    <div class="indicadores"></div>
+                </div>
+    
+                <div class="contenedor-principal">
+                    
+    
+                    <div class="contenedor-carousel">
+                        <div class="carousel">
+                            <div class="pelicula">
+                                {% if peliculas %}
+                                {% for a in accion %}
+                                <a href="{% url 'blog:detalle_post' a.slug %}"><img src="{{ a.imagen_fondo.url }}"</a>
+                                {% endfor %}
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="peliculas-recomendadas container">
+                <div class="contenedor-titulo-controles">
+                    <h3>Peliculas Animadas</h3>
+                    <div class="indicadores"></div>
+                </div>
+    
+                <div class="contenedor-principal">
+                    <div class="contenedor-carousel">
+                        <div class="carousel">
+                            <div class="pelicula">
+                                {% if peliculas %}
+                                {% for a in animadas %}
+                                <a href="{% url 'blog:detalle_post' a.slug %}"><img src="{{ a.imagen_fondo.url }}"</a>
+                                {% endfor %}
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="peliculas-recomendadas container">
+                <div class="contenedor-titulo-controles">
+                    <h3>Peliculas Superheroes</h3>
+                    <div class="indicadores"></div>
+                </div>
+    
+                <div class="contenedor-principal">
+                    <div class="contenedor-carousel">
+                        <div class="carousel">
+                            <div class="pelicula">
+                                {% if peliculas %}
+                                {% for s in superheroes %}
+                                <a href="{% url 'blog:detalle_post' s.slug %}"><img src="{{ s.imagen_fondo.url }}"</a>
+                                {% endfor %}
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <p>&copy | NETFLIX</p>
+        </footer>
+
+        <script src="https://kit.fontawesome.com/2c36e9b7b1.js" crossorigin="anonymous"></script>
+        <script src="{% static 'js/main.js' %}"></script>
+    </body>
+</html>

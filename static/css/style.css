@@ -1,0 +1,264 @@
+:root {
+    /* crear variables en CSS */
+    --rojo: #d0e60f;
+    --fondo: #141414;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* evitar margen y paddin por defecto en navegadores*/
+}
+
+body {
+    background: var(--fondo);
+    font-family: sans-serif;
+}
+
+.container {
+    width: 90%;
+    margin: auto;
+}
+
+header {
+    padding: 15px 0;
+}
+
+header .container {
+    display: flex;
+    justify-content: space-between; /* logo a la izquieda menu derecha */
+    align-items: center; /* centrar elementos de forma vertical */
+}
+
+header .logotipo {
+    text-decoration: none;
+    font-family: 'Bebas Neue', cursive;
+    font-weight: normal;
+    color: var(--rojo);
+    font-size: 40px;
+    transition: .3s ease all;
+}
+
+header .logotipo:hover {
+    color: white;
+}
+
+header nav a {
+    color: rgb(209, 203, 203);
+    text-decoration: none;
+    margin-right: 20px; /* division entre elementos */
+    font-weight: bolder;
+    transition: .3s ease all;
+}
+
+header nav a:hover,
+header nav a.activo {
+    color: #d0e60f;
+}
+
+/* -------- PELICULA PRINCIPAL ------*/
+/*
+.pelicula-principal {
+    font-size: 16px;
+    min-height: 36em;  
+    color: #fff;
+    background: linear-gradient(rgba(110, 107, 63, 0.5) 0%, rgba(0,0,0, .80) 100%), url(../img/tenet_fondo.jpg);
+    background-position: center center;
+    background-size: cover;
+    position: relative; 
+    margin-bottom: 3.12em;
+    display: flex;
+    align-items: flex-end;
+}
+*/
+.pelicula-principal {
+    position: relative;
+    display: inline-block;
+    
+}
+
+/* imagen */
+.pelicula-principal .imagen {
+    object-fit: cover;
+    width: 100%;
+    height: 580px;
+
+    box-shadow:
+    0 2.8px 2.2px rgba(0, 0, 0, 0.034),
+    0 6.7px 5.3px rgba(0, 0, 0, 0.048),
+    0 12.5px 10px rgba(0, 0, 0, 0.06),
+    0 22.3px 17.9px rgba(0, 0, 0, 0.072),
+    0 41.8px 33.4px rgba(0, 0, 0, 0.086),
+    0 100px 80px rgba(0, 0, 0, 0.12);
+
+}
+
+.pelicula-principal .container {
+    margin: 0 auto;
+    margin-bottom: 100px;
+    position: absolute;
+    top: 300px;
+    right: 80px;
+    background: rgba(0,0,0, 0.5);
+    
+    border-radius: 10px;
+    padding: 25px;
+    width: 1200px;
+}
+
+main {
+    min-height: 450px;
+}
+
+
+/* titulo */
+.pelicula-principal .titulo {
+    color: #fff;
+    font-weight: 600;
+    font-size: 3.12em; 
+    transition: .3s ease all;
+    cursor: pointer;
+}
+
+.pelicula-principal .titulo:hover {
+    color: #d0e60f;
+}
+
+/* director */
+.pelicula-principal .director {
+    color: #fff;
+    font-weight: normal;
+    font-size: 1.2em;
+    margin-bottom: 0.3em; /*20px */
+}
+
+/* descripcion */
+.pelicula-principal .descripcion {
+    color: #fff;
+    font-weight: bold;
+    font-size: 1em;
+    line-height: 1.2em;
+    max-width: 90%;
+    margin-bottom: 1.25em;
+}
+
+/* botones */
+.pelicula-principal .boton {
+    background: rgba(0,0,0, 0.5);
+    border: none;
+    border-radius: 10px;
+    padding: 0.93em 1.87em; /* 15px   15 px izq der */
+    color: #fff;
+    margin-right: 1.25em;
+    cursor: pointer;
+    transition: .3s ease all;
+    font-size: 1.12em; /* 18 px */
+}
+
+/* separar icono del texto botones */
+.pelicula-principal .boton i {
+    margin-right: 10px;
+}
+
+.pelicula-principal .boton:hover {
+    background: #d0e60f;
+    color: #000;
+    text-decoration: none;
+
+}
+
+
+
+@media screen and (max-width: 500px){
+    header .logotipo {
+        margin-bottom: 10px;
+        font-size: 30px;
+    }
+
+    header .container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .pelicula-principal {
+        font-size: 14px;
+    }
+}
+
+
+/* ---- ----- ----- CONTENEDOR NUEVAS PELICULAS----- ----- ----- */
+.peliculas-recomendadas {
+    margin-top: 40px;
+}
+
+.contenedor-titulo-controles {
+    margin-bottom: 10px;
+}
+
+.peliculas-recomendadas h3 {
+    color: #fff;
+}
+
+.contenedor-carousel .pelicula img {
+    object-fit: cover;
+    border-radius: 2px;
+    width: 33%;
+    height: 200px;
+    transition: .2s ease all;
+}
+
+.peliculas-recomendadas .contenedor-carousel .container-pelicula .pelicula img:hover {
+	transform: scale(1.1);
+    transform-origin: center;
+    transition: .3s ease all;
+}
+
+/*  edit */
+.container-edit {
+    left: 98px;
+}
+.post-imagenes h3 {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.titulo-principal {
+    color: #d0e60f;
+}
+
+
+footer p {
+    margin-top: 20px;
+    text-align: center;
+    color: white;
+    font-family: 'Bebas Neue', cursive;
+}
+
+/*-----------  busqueda -------*/
+.container-busqueda {
+    position: relative;
+    text-align: right;
+    bottom: 30px;
+    width: 100%;
+}
+
+.container-busqueda button {
+    font-size: 17px;
+    border: none;
+    font-family: 'Bebas Neue', cursive;
+    padding: 4px;
+    transition: .3s ease all;
+    
+}
+
+.container-busqueda input {
+    font-size: 22px;
+    border: none;
+    font-family: 'Bebas Neue', cursive;
+}
+.container-busqueda input:focus {
+    outline: 0;
+}
+.container-busqueda button:hover {
+    background: #d0e60f;
+}
